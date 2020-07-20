@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+  .blog-layout {
+  margin:0;
+  width:100%;
+  min-height: 100vh;
+  font-family: 'Open Sans';
+  background: #fafafa;
+  justify-content:center;
+  align-items:center;
+  }
+  .post-area {
+    box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+    border-bottom: 1px solid #eee;
+    background: #fff;
+
+  }
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+    }
+  .ram {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+
+  }
+  .main-post{
+    border-right: 0px ;
+
+  }
+  .main-post .post-top-area,
+  .main-post .post-bottom-area{
+     margin: 30px;
+     justify-content:center;
+
+   }
+  .main-post .pre-title{
+    margin-bottom: 20px;
+    color: #777;
+
+  }
+ .top{
+    color:#272828;
+    text-transform:uppercase;
+    text-align:center;
+   }
+   post-area .post-info{
+    position: relative;
+     padding: 30px 0;
+
+   }
+  .post-area .post-info .left-area{
+    height: 70px;
+    width: 70px;
+    border-radius: 100px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    border: 6px	solid #fff;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+  }
+  .post-area .post-info .middle-area{
+    padding-left: 90px;
+    display: inline-block;
+  }
+  .post-area .post-info .date{
+    display: inline-block;
+    color: #999;
+  }
+
+ .para{
+    margin-bottom: 25px;
+    font-weight:300;
+    font-size:1.2em;
+  }
+  .post-area .post-image{
+    max-height: 500px;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    margin:20px;
+    text-align:center;
+   }
+   .main-post .post-top-area,
+  .main-post .post-bottom-area{
+    margin: 30px;
+  }
+ .single-post .post-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  </style>
+  <div class="blog-layout">
+  <section class="post-area">
+  <div class="container">
+
+    <div class="ram">
+
+      <div class="col-lg-1 col-md-0"></div>
+      <div class="col-lg-10 col-md-12">
+
+        <div class="main-post">
+
+          <div class="post-top-area">
+
+
+
+            <h3 class="top"><a ><b>{{story.topic}}</b></a></h3>
+
+            <div class="post-info">
+
+              <div class="middle-area">
+                <a class="name" href="/about/"><b>Sowmiyan</b></a>
+                <h6 class="date">{{story.date}}</h6>
+              </div>
+
+            </div><!-- post-info -->
+            <div class="post-image"><img src="{{story.image.url}}" alt="Blog Image"></div>
+              <hr>
+              <p align="justify"  class="para">{{story.content}}</p>
+              <div class="post-image"><img src="{{story.thumb.url}}" alt="thumb Image"></div>
+              <hr>
+              <p align="justify"  class="para">{{story.para}}</p>
+              <a  style="text-decoration:none;text-align:center;" href="{{story.link}}" target="_blank"><b>LINK: {{story.link}}</b></a>
+
+
+
+          </div><!-- post-top-area -->
+        </div><!-- main-post -->
+      </div><!-- col-lg-8 col-md-12 -->
+    </div><!-- row -->
+  </div><!-- container -->
+  </section><!-- post-area -->
+
+{% endblock %}

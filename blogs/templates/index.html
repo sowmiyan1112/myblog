@@ -1,0 +1,117 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+  <style>
+
+    .blog-layout {
+      background:#DFF1F8 ;
+      font-family:Roboto;
+      font-size: 14px;
+      color: #000;
+      margin:0;
+      padding: 0;
+    }
+    .slide{
+      width:100%;
+      height:18rem;
+
+    }
+
+    .swiper-container {
+      width: 100%;
+      padding-top: 30px;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      border-radius:0.8rem;
+      background-size: cover;
+      width: 18rem;
+      height: 22rem;
+      background:#fff;
+    }
+    .swiper-slide .imgBx{
+      width:100%
+      height: 20rem;
+      overflow:hidden;
+      border-radius :0.8rem;
+    }
+    .swiper-slide .imgBx img{
+      width:100%
+
+
+    }
+    .swiper-slide. detail{
+      box-sizing:border-box;
+      padding:20px;
+
+    }
+    .swiper-slide .detail h3{
+      margin:2px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-transform:uppercase;
+      padding:2px;
+      color:#0BB1F3;
+      font-size:1.1em;
+      text-align :center;
+      line-height:1.2em;
+
+    }
+    .swiper-slide .detail span{
+      font-size:16px;
+      color:#3A3B3B;
+      margin:5px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      text-align:center;
+    }
+</style>
+<div class="blog-layout">
+    <img class="slide" src="{% static 'blogs/media/slide.jpg' %}" alt="slide" >
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for i in article %}
+      <div class="swiper-slide" >
+          <div class="imgBx">
+              <img src="{{i.image.url}}" >
+          </div>
+          <div class="detail">
+              <h3>{{i.topic}}</h3>
+              <span>{{i.content}}</span>
+          </div>
+
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="swiper-pagination"></div>
+  </div>
+
+
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
+ </div>
+{% endblock %}
